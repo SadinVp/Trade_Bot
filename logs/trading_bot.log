@@ -1,4 +1,10 @@
-2026-06-11 20:42:01,831 - INFO - Placing MARKET order | Symbol=BTCUSDT, Side=BUY, Quantity=0.001
-2026-06-11 20:42:02,529 - INFO - MARKET order successful: {'orderId': 14804665474, 'symbol': 'BTCUSDT', 'status': 'NEW', 'clientOrderId': 'x-Cb7ytekJ921b0bc6e7a6701ee95ec8', 'price': '0.00', 'origQty': '0.0010', 'executedQty': '0.0000', 'cumQty': '0.0000', 'timeInForce': 'GTC', 'type': 'MARKET', 'reduceOnly': False, 'closePosition': False, 'side': 'BUY', 'positionSide': 'BOTH', 'stopPrice': '0.00', 'workingType': 'CONTRACT_PRICE', 'priceProtect': False, 'origType': 'MARKET', 'priceMatch': 'NONE', 'selfTradePreventionMode': 'EXPIRE_MAKER', 'goodTillDate': 0, 'updateTime': 1781190722490}
-2026-06-11 21:12:30,009 - INFO - Placing MARKET order | Symbol=BTCUSDT, Side=BUY, Quantity=0.001
-2026-06-11 21:12:30,334 - INFO - MARKET order successful: {'orderId': 14813037752, 'symbol': 'BTCUSDT', 'status': 'NEW', 'clientOrderId': 'x-Cb7ytekJ6b4b40ffa5da78efe71653', 'price': '0.00', 'origQty': '0.0010', 'executedQty': '0.0000', 'cumQty': '0.0000', 'timeInForce': 'GTC', 'type': 'MARKET', 'reduceOnly': False, 'closePosition': False, 'side': 'BUY', 'positionSide': 'BOTH', 'stopPrice': '0.00', 'workingType': 'CONTRACT_PRICE', 'priceProtect': False, 'origType': 'MARKET', 'priceMatch': 'NONE', 'selfTradePreventionMode': 'EXPIRE_MAKER', 'goodTillDate': 0, 'updateTime': 1781192550360}
+2026-06-11 21:23:36 | INFO | Placing MARKET order | Symbol=BTCUSDT, Side=BUY, Quantity=0.001
+2026-06-11 21:23:37 | INFO | MARKET order successful | OrderID=14816154090 | Status=NEW | Symbol=BTCUSDT | Side=BUY | ExecutedQty=0.0000
+2026-06-11 21:23:46 | INFO | Placing MARKET order | Symbol=BTCUSDT, Side=SELL, Quantity=0.001
+2026-06-11 21:23:46 | INFO | MARKET order successful | OrderID=14816190434 | Status=NEW | Symbol=BTCUSDT | Side=SELL | ExecutedQty=0.0000
+2026-06-11 21:23:50 | INFO | Placing LIMIT order | Symbol=BTCUSDT, Side=BUY, Quantity=0.001, Price=90000.0
+2026-06-11 21:23:50 | ERROR | LIMIT order failed: APIError(code=-4016): Limit price can't be higher than 65687.19.
+2026-06-11 21:24:00 | INFO | Placing LIMIT order | Symbol=BTCUSDT, Side=SELL, Quantity=0.001, Price=150000.0
+2026-06-11 21:24:01 | INFO | LIMIT order successful | OrderID=14816248759 | Status=NEW | Symbol=BTCUSDT | Side=SELL | ExecutedQty=0.0000
+2026-06-11 21:24:46 | INFO | Placing MARKET order | Symbol=BTCUSDT, Side=BUY, Quantity=0.001
+2026-06-11 21:24:47 | INFO | MARKET order successful | OrderID=14816475593 | Status=NEW | Symbol=BTCUSDT | Side=BUY | ExecutedQty=0.0000

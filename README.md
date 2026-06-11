@@ -1,23 +1,28 @@
 # Binance Futures Testnet Trading Bot
 
-A simple Python CLI application that places **MARKET** and **LIMIT** orders on the **Binance Futures Testnet (USDT-M)**. The project is built with a modular structure and includes input validation, logging, and exception handling.
+## Overview
+
+This project is a Python-based trading bot that interacts with the **Binance Futures Testnet (USDT-M)**. It allows users to place **MARKET** and **LIMIT** orders for both **BUY** and **SELL** operations through a command-line interface.
+
+The application follows a modular design with separate components for API communication, order processing, validation, and logging. It also includes an enhanced interactive CLI that guides users through order placement.
 
 ---
 
-## Features
+# Features
 
-- ✅ Place **MARKET** orders
-- ✅ Place **LIMIT** orders
-- ✅ Supports both **BUY** and **SELL**
-- ✅ Command Line Interface (CLI) using `argparse`
-- ✅ Input validation
-- ✅ Logs API requests, responses, and errors
-- ✅ Exception handling for invalid inputs and API failures
-- ✅ Uses Binance Futures Testnet (safe for testing)
+* Place **MARKET** orders
+* Place **LIMIT** orders
+* Supports both **BUY** and **SELL**
+* Interactive CLI menu (Bonus Feature)
+* Command-line argument support
+* Input validation
+* Exception handling
+* API request and response logging
+* Binance Futures Testnet integration
 
 ---
 
-## Project Structure
+# Project Structure
 
 ```
 trading_bot/
@@ -25,10 +30,10 @@ trading_bot/
 ├── bot/
 │   ├── __init__.py
 │   ├── client.py
+│   ├── cli.py
 │   ├── orders.py
 │   ├── validators.py
-│   ├── logging_config.py
-│   └── cli.py
+│   └── logging_config.py
 │
 ├── logs/
 │   └── trading_bot.log
@@ -41,198 +46,157 @@ trading_bot/
 
 ---
 
-## Requirements
+# Setup Steps
 
-- Python 3.9+
-- Binance Futures Testnet Account
-- Testnet API Key and Secret
-
----
-
-## Installation
-
-### 1. Clone the repository
+## 1. Clone the repository
 
 ```bash
-git clone <your-github-repository-url>
+git clone <repository-url>
 cd trading_bot
 ```
 
-### 2. Create a virtual environment
+## 2. Create and activate a virtual environment
 
-#### macOS/Linux
+### macOS/Linux
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-#### Windows
+### Windows
 
 ```bash
 python -m venv .venv
 .venv\Scripts\activate
 ```
 
-### 3. Install dependencies
+## 3. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
----
-
-## Configure API Keys
+## 4. Configure API credentials
 
 Create a `.env` file in the project root:
 
 ```env
-API_KEY=YOUR_TESTNET_API_KEY
-API_SECRET=YOUR_TESTNET_API_SECRET
+API_KEY=YOUR_BINANCE_TESTNET_API_KEY
+API_SECRET=YOUR_BINANCE_TESTNET_API_SECRET
 ```
 
-> **Important:** Use **Binance Futures Testnet** API keys, not production Binance API keys.
-
----
-
-## Verify Connection
-
-Run:
+## 5. Verify the connection
 
 ```bash
 python test_connection.py
 ```
 
-Expected output:
-
-```
-✅ Connection successful!
-```
+If successful, the application should connect to the Binance Futures Testnet without errors.
 
 ---
 
-## Running the Trading Bot
+# How to Run
 
-### Place a MARKET BUY order
+## Option 1: Interactive Mode (Recommended)
 
-```bash
-python -m bot.cli \
-    --symbol BTCUSDT \
-    --side BUY \
-    --type MARKET \
-    --quantity 0.001
-```
-
-### Place a MARKET SELL order
+Run:
 
 ```bash
-python -m bot.cli \
-    --symbol BTCUSDT \
-    --side SELL \
-    --type MARKET \
-    --quantity 0.001
+python -m bot.cli
 ```
 
-### Place a LIMIT BUY order
+The application will prompt for:
 
-```bash
-python -m bot.cli \
-    --symbol BTCUSDT \
-    --side BUY \
-    --type LIMIT \
-    --quantity 0.001 \
-    --price 50000
-```
+* Order Type (MARKET or LIMIT)
+* Symbol
+* Side (BUY or SELL)
+* Quantity
+* Price (for LIMIT orders)
 
-### Place a LIMIT SELL order
-
-```bash
-python -m bot.cli \
-    --symbol BTCUSDT \
-    --side SELL \
-    --type LIMIT \
-    --quantity 0.001 \
-    --price 100000
-```
-
----
-
-## Sample Output
+Example:
 
 ```
-========== ORDER REQUEST ==========
-Symbol   : BTCUSDT
-Side     : BUY
-Type     : MARKET
-Quantity : 0.001
+===================================
+ Binance Futures Testnet Trading Bot
 ===================================
 
-✅ ORDER PLACED SUCCESSFULLY
+Select Order Type
+1. MARKET
+2. LIMIT
 
-Order ID      : 123456789
-Status        : FILLED
-Executed Qty  : 0.001
-Average Price : 107250.45
+Enter your choice (1/2): 1
+Enter Symbol (e.g. BTCUSDT): BTCUSDT
+Enter Side (BUY/SELL): BUY
+Enter Quantity: 0.001
 ```
 
 ---
 
-## Logging
+## Option 2: Command-Line Arguments
 
-All requests, responses, and errors are stored in:
+### MARKET Order
+
+```bash
+python -m bot.cli \
+  --symbol BTCUSDT \
+  --side BUY \
+  --type MARKET \
+  --quantity 0.001
+```
+
+### LIMIT Order
+
+```bash
+python -m bot.cli \
+  --symbol BTCUSDT \
+  --side SELL \
+  --type LIMIT \
+  --quantity 0.001 \
+  --price 150000
+```
+
+---
+
+# Logging
+
+Application logs are stored in:
 
 ```
 logs/trading_bot.log
 ```
 
-Example:
+The log file records:
 
-```
-2026-06-11 20:15:30 - INFO - Placing MARKET order | Symbol=BTCUSDT, Side=BUY, Quantity=0.001
-2026-06-11 20:15:31 - INFO - MARKET order successful: {...}
-```
-
----
-
-## Error Handling
-
-The application validates:
-
-- Trading symbol
-- Order side (`BUY` or `SELL`)
-- Order type (`MARKET` or `LIMIT`)
-- Quantity must be greater than zero
-- Price is required for `LIMIT` orders
-
-API and network exceptions are caught and logged.
+* Order requests
+* Successful API responses
+* Errors and exceptions
 
 ---
 
-## Assumptions
+# Assumptions
 
-- The application is intended for **Binance Futures Testnet** only.
-- The user has valid Testnet API credentials.
-- Supported order types are `MARKET` and `LIMIT`.
-- Supported sides are `BUY` and `SELL`.
-- The trading symbol exists on Binance Futures Testnet.
-
----
-
-## Technologies Used
-
-- Python 3
-- python-binance
-- python-dotenv
-- argparse
-- logging
+* The application is intended for **Binance Futures Testnet (USDT-M)** only.
+* Users must generate valid **Testnet API credentials** before running the application.
+* Supported order types are **MARKET** and **LIMIT**.
+* Supported order sides are **BUY** and **SELL**.
+* The trading symbol must exist on Binance Futures Testnet.
+* Internet connectivity is required for communication with Binance APIs.
 
 ---
 
-## Future Enhancements
+# Technologies Used
 
-- Stop-Limit orders
-- OCO orders
-- Interactive CLI menus
-- Web dashboard
-- Order history
-- Position monitoring
+* Python 3
+* python-binance
+* python-dotenv
+* argparse
+* logging
+
+---
+
+# Bonus Feature Implemented
+
+**Enhanced CLI UX**
+
+The application provides an interactive menu-driven interface that guides users through order placement with prompts and validation messages, improving usability compared to requiring long command-line arguments.

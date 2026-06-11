@@ -20,7 +20,14 @@ def place_market_order(symbol, side, quantity):
             quantity=quantity,
         )
 
-        logger.info(f"MARKET order successful: {response}")
+        logger.info(
+            "MARKET order successful | "
+            f"OrderID={response.get('orderId')} | "
+            f"Status={response.get('status')} | "
+            f"Symbol={response.get('symbol')} | "
+            f"Side={response.get('side')} | "
+            f"ExecutedQty={response.get('executedQty')}"
+        )
         return response
 
     except Exception as e:
@@ -49,7 +56,14 @@ def place_limit_order(symbol, side, quantity, price):
             timeInForce="GTC",  # Good Till Cancelled
         )
 
-        logger.info(f"LIMIT order successful: {response}")
+        logger.info(
+            "LIMIT order successful | "
+            f"OrderID={response.get('orderId')} | "
+            f"Status={response.get('status')} | "
+            f"Symbol={response.get('symbol')} | "
+            f"Side={response.get('side')} | "
+            f"ExecutedQty={response.get('executedQty')}"
+        )
         return response
 
     except Exception as e:
