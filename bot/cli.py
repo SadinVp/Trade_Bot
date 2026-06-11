@@ -90,10 +90,15 @@ def main():
 
         print("✅ ORDER PLACED SUCCESSFULLY\n")
 
-        print("Order ID      :", response.get("orderId"))
-        print("Status        :", response.get("status"))
-        print("Executed Qty  :", response.get("executedQty"))
-        print("Average Price :", response.get("avgPrice", "N/A"))
+        print("\n========== ORDER RESPONSE ==========")
+        print(f"Order ID        : {response.get('orderId')}")
+        print(f"Status          : {response.get('status')}")
+        print(f"Symbol          : {response.get('symbol')}")
+        print(f"Side            : {response.get('side')}")
+        print(f"Type            : {response.get('type')}")
+        print(f"Executed Qty    : {response.get('executedQty')}")
+        print(f"Client Order ID : {response.get('clientOrderId')}")
+        print("====================================")
 
     except Exception as e:
         print("\n❌ ERROR")
